@@ -1,0 +1,29 @@
+.box-with-gradient-shadow {
+  position: relative;
+  /* width: 200px; */
+  /* height: 200px; */
+}
+
+.box-with-gradient-shadow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(10px);
+  border: 1px transparent;
+  border-radius: 0px;
+  /* standard box shadow */
+  background: linear-gradient(to bottom right, blue, red);
+  /* linear gradient */
+  z-index: -1;
+  /* ensure the pseudo-element is behind the content */
+}
+
+/* Additional styling for content */
+.box-with-gradient-shadow>* {
+  position: relative;
+  z-index: 1;
+  /* ensure content is above pseudo-element */
+}
