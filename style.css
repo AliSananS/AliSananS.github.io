@@ -15,7 +15,7 @@ body {
   background-color: #020202;
   color: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 14px;
 }
 
 a {
@@ -26,3 +26,4 @@ a {
 footer p {
   color: gray;
 }
+
