@@ -1,0 +1,18 @@
+---
+// Import navbar items
+import navbarItems from "@/lib/navbarItems.ts";
+---
+
+<nav aria-label="Main Navigation" class="flex w-full">
+  <ul
+    class="flex flex-row items-center justify-between gap-4 py-4 px-8 bg-background rounded-full w-full h-fit border"
+  >
+    {
+      navbarItems.map((item) => (
+        <li>
+          <a href={item.href}>{item.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

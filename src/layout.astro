@@ -1,0 +1,31 @@
+---
+import "@/styles/global.css";
+import Navbar from "./components/Navbar.astro";
+---
+
+<html lang="en" class="bg-background text-foreground">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Ali's Portfolio</title>
+  </head>
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  :root {
+    display: flex;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+</style>
