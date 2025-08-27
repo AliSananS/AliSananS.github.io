@@ -1,18 +1,78 @@
 ---
 // Import navbar items
 import navbarItems from "@/lib/navbarItems.ts";
+import { Icon } from "astro-icon/components";
 ---
 
-<nav aria-label="Main Navigation" class="flex w-full">
-  <ul
-    class="flex flex-row items-center justify-between gap-4 py-4 px-8 bg-background rounded-full w-full h-fit border"
+<nav
+  aria-label="Main Navigation"
+  class="z-50 sticky top-0 w-full flex justify-center pt-4"
+>
+  <div
+    class="flex items-center justify-between w-[90%] max-w-4xl py-3 px-6 bg-background/20 rounded-full border backdrop-blur-sm opacity-0 scale-x-85 translate-y-4 transition-all duration-500"
+    id="navbar"
+  >
+    <!-- Brand -->
+    <a href="/" class="text-md font-mono font-bold">&ltAli Sanan/&gt</a>
+
+    <!-- Desktop Nav -->
+    <ul class="hidden md:flex flex-row items-center gap-6">
+      {
+        navbarItems.map((item) => (
+          <li class="text-md hover:text-foreground/90 transition">
+            <a href={item.href}>{item.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button id="menu-btn" class="md:hidden size-6" aria-label="Toggle Menu">
+      <Icon
+        id="menu-icon-ham"
+        name="hamburger-menu"
+        class="transition-all duration-300 ease-in-out"
+      />
+      <Icon
+        id="menu-icon-min"
+        name="minimize"
+        class="hidden scale-0 transition-all duration-300 ease-in-out"
+      />
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobileMenu"
+    class="md:hidden absolute top-20 w-[90%] max-w-4xl bg-background/70 border rounded-xl backdrop-blur-md px-4 py-4 flex flex-col gap-4 hidden animate-nav"
   >
     {
       navbarItems.map((item) => (
-        <li>
-          <a href={item.href}>{item.title}</a>
-        </li>
+        <a href={item.href} class="text-md hover:text-foreground/90 w-full">
+          {item.title}
+        </a>
       ))
     }
-  </ul>
+  </div>
 </nav>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.getElementById("navbar");
+    if (navbar) {
+      navbar.classList.remove("opacity-0", "translate-y-4", "scale-x-85");
+      navbar.classList.add("opacity-100", "translate-y-0");
+    }
+  });
+
+  const mobileMenu = document.getElementById("mobileMenu");
+  const min = document.getElementById("menu-icon-min");
+  const ham = document.getElementById("menu-icon-ham");
+
+  const menuBtn = document.getElementById("menu-btn");
+  menuBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+    min?.classList.toggle("hidden");
+    min?.classList.toggle("scale-0");
+    ham?.classList.toggle("hidden");
+  });
+</script>

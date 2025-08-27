@@ -1,0 +1,14 @@
+.animate-nav {
+	animation: fadeInUnblur 0.2s forwards;
+}
+
+@keyframes fadeInUnblur {
+	0% {
+		opacity: 0;
+		filter: blur(10px);
+	}
+	100% {
+		opacity: 1;
+		filter: blur(0px); /* No blur at the end */
+	}
+}

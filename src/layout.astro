@@ -1,17 +1,20 @@
 ---
 import "@/styles/global.css";
+import { Font } from "astro:assets";
 import Navbar from "./components/Navbar.astro";
 ---
 
-<html lang="en" class="bg-background text-foreground">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <Font cssVariable="--font-inter" preload />
+    <Font cssVariable="--font-fira-code" preload />
     <title>Ali's Portfolio</title>
   </head>
-  <body>
+  <body class="transition-colors">
     <Navbar />
     <main>
       <slot />
@@ -20,8 +23,10 @@ import Navbar from "./components/Navbar.astro";
 </html>
 
 <style>
-  :root {
+  html,
+  body {
     display: flex;
+    flex-direction: column;
     gap: 0;
     padding: 0;
     margin: 0;

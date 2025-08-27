@@ -1,7 +1,99 @@
 ---
+import GradientButton from "@/components/GradientButton.astro";
 import Layout from "@/layout.astro";
+import Background from "@/components/Background.astro";
+import GradientBg from "@/components/GradientBg.astro";
+import { Icon } from "astro-icon/components";
+import config from "@/siteConfig";
+import ProjectCard from "@/components/ProjectCard.astro";
 ---
 
 <Layout>
-  
+  <Background opacity="50" class="flex flex-col items-center justify-center">
+    <div
+      class="relative w-full h-screen flex flex-col align-center justify-start max-w-4xl"
+    >
+      <div
+        class="z-10 flex flex-col items-center my-16 gap-4 text-center scale-95 translate-y-4 transition-transform ease duration-500"
+        id="hero"
+      >
+        <h1 class="font-semibold font-sans text-4xl lg:text-7xl">
+          <span class="text-foreground/70">I'm</span>
+          <span class="font-mono word-spacing-sm">Ali Sanan</span>
+        </h1>
+        <h2
+          class="font-semibold text-gradient bg-gradient-to-r gradient-theme text-4xl lg:text-7xl"
+        >
+          Full-Stack developer
+        </h2>
+        <p class="mt-4 px-4 text-xl text-foreground/60">
+          Hi <span class="text-foreground">👋</span>, I'm Ali Sanan and I'm a
+          full stack developer working as a freelancer in Pakistan.
+        </p>
+        <div
+          class="w-full flex flex-row items-center px-4 justify-center gap-4 mt-4"
+        >
+          <GradientButton class="z-10 btn-lg" variant="gradient"
+            >Get In Touch</GradientButton
+          >
+          <a
+            href=`mailto:${config.email}`
+            class="hover:scale-105 transition-all duration-300 ease-in-out"
+          >
+            <button class="z-10 btn gap-2 text-sm">
+              <Icon name="mail" />
+              Mail us
+            </button>
+          </a>
+        </div>
+      </div>
+      <GradientBg
+        class="absolute inset-0 z-0 w-1/2 h-1/2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-[120px] md:blur-[160px] lg:blur-[200px] opacity-30"
+      />
+    </div>
+    <div class="flex flex-col gap-8 h-screen w-full max-w-4xl z-10 px-4">
+      <h2 class="font-bold text-4xl text-foreground">Projects</h2>
+      <div
+        class="flex flex-col lg:flex-row w-full items-center opacity-0 translate-y-12 transition-all duration-700 ease-out"
+        id="projects-section"
+      >
+        <ProjectCard
+          image="/static/images/nhfs-banner.png"
+          link="https://github.com/AlisananS/NHFS"
+          title="NHFS"
+          description="A sleek HTTP file server for the web built with Next.js and HeroUI"
+        />
+      </div>
+    </div>
+  </Background>
 </Layout>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const hero = document.querySelector("#hero");
+    if (hero) {
+      hero.classList.remove("opacity-0", "translate-y-4", "scale-95");
+      hero.classList.add("opacity-100", "translate-y-0");
+    }
+  });
+
+  const myAnimatedElement = document.getElementById("projects-section");
+
+  if (myAnimatedElement !== null) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("opacity-0", "translate-y-12");
+            entry.target.classList.add("opacity-100", "translate-y-0");
+            // Optionally, unobserve after animation to prevent re-triggering
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    ); // Trigger when 50% of the element is visible
+
+    observer.observe(myAnimatedElement);
+  }
+</script>

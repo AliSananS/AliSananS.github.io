@@ -1,0 +1,20 @@
+---
+const { bgColor, gridColor, boxSize, className, style } = Astro.props;
+---
+
+<div
+  class={className}
+  style={`  
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: ${bgColor || "transparent"};
+    background-image: linear-gradient(${gridColor || "var(--color-divider)"} .1em, transparent .1em), linear-gradient(90deg, ${gridColor || "var(--color-divider)"} .1em, transparent .1em);
+    background-size: ${boxSize} ${boxSize};
+    ${style}
+    `}
+>
+</div>
