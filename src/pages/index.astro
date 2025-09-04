@@ -36,9 +36,11 @@ import ProjectCard from "@/components/ProjectCard.astro";
         <div
           class="w-full flex flex-row items-center px-4 justify-center gap-4 mt-4"
         >
-          <GradientButton class="z-10 btn-lg" variant="gradient"
-            >Get In Touch</GradientButton
-          >
+          <a href="/about">
+            <GradientButton class="z-10 btn-lg" variant="gradient"
+              >Get In Touch</GradientButton
+            >
+          </a>
           <a
             href=`mailto:${config.email}`
             class="hover:scale-105 transition-all duration-300 ease-in-out"
