@@ -59,7 +59,7 @@ import ProjectCard from "@/components/ProjectCard.astro";
     <div class="flex flex-col gap-8 h-screen w-full max-w-4xl z-10 px-4">
       <h2 class="font-bold text-4xl text-foreground">Projects</h2>
       <div
-        class="flex flex-col lg:flex-row w-full items-center opacity-0 translate-y-12 transition-all duration-700 ease-out"
+        class="flex flex-col gap-4 lg:flex-row w-full items-center opacity-0 translate-y-12 transition-all duration-700 ease-out"
         id="projects-section"
       >
         <ProjectCard
@@ -67,6 +67,12 @@ import ProjectCard from "@/components/ProjectCard.astro";
           link="https://github.com/AlisananS/NHFS"
           title="NHFS"
           description="A sleek HTTP file server for the web built with Next.js and HeroUI"
+        />
+        <ProjectCard
+          image="/static/images/nn-banner.png"
+          link="https://nncarpenter.com"
+          title="NN Carpenter"
+          description="Carpentry Website Built with Next.Js and Tailwind CSS"
         />
       </div>
     </div>
